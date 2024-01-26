@@ -23,7 +23,7 @@ function NavBar() {
 
         <Link to='/news'>
           <Button 
-            variant="contained">Compound</Button>
+            variant="contained">Compounds</Button>
         </Link>
 
 
