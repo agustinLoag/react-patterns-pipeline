@@ -1,8 +1,7 @@
 import { Grid } from '@mui/material'
-import React from 'react'
 import { Outlet } from 'react-router-dom'
-import NavBar from '../components/Navbar'
 import Footer from '../components/Footer/Footer'
+import NavBar from '../components/Navbar'
 
 export const MainLayout = () => {
     return (

@@ -1,7 +1,6 @@
-import React from 'react'
-import { NormalTodo } from '../components/CompoundPattern/NormalTodo'
-import { FinalTodo } from '../components/CompoundPattern/FinalTodo'
 import { Typography } from '@mui/material'
+import { FinalTodo } from '../components/CompoundPattern/FinalTodo'
+import { NormalTodo } from '../components/CompoundPattern/NormalTodo'
 
 const CompoundPattern = () => {
   return (
