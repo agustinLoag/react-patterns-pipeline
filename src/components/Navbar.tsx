@@ -10,7 +10,7 @@ function NavBar() {
       <Toolbar>
         <Link to='/'>
           <Button 
-            variant="contained">Login</Button>
+            variant="contained">Inicio</Button>
         </Link>
         <Link to='/adminPanel'>
           <Button 
