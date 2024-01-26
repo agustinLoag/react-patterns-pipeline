@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Grid, Box, Typography, TextField, FormControlLabel, Checkbox, Button, Paper, Link } from '@mui/material'
 import React from 'react'
 import WithControllerForm from '../../hocs/controlledForm.component'
 import { useLogin } from './useLoginForm'
 
-const LoginForm = ({ formValues, handleChange }) => {
+interface UseLoginResult {
+    formValues: any;
+    handleChange: (val: unknown, key: string) => void;
+}
+const LoginForm: React.FC<UseLoginResult> = ({ formValues, handleChange }) => {
     const { handleSubmit } = useLogin(formValues);
     return (
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

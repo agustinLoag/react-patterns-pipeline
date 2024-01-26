@@ -1,6 +1,13 @@
-import React, { useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { ReactNode, useState } from 'react'
 
-const WithControllerForm = (Form: unknown, initialState: Record<string,unknown> = {}) => {
+interface FormProps {
+  formValues: Record<string, any>;
+  handleChange: (val: unknown, key: string) => void;
+  children: ReactNode;
+}
+
+const WithControllerForm = (Form: React.FC<FormProps>, initialState: Record<string,any> = {}) => {
     const ControlledForm = () => { 
         const [formValues, setFormValues] = useState(initialState)
         const handleChange = (val: unknown, key: string) => { 

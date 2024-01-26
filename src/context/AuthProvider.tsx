@@ -1,17 +1,33 @@
-import {createContext, useState} from 'react'
+import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
 
+interface Auth {
+  password: string;
+  user: string;
+  roles: number[];
+}
 
-const AuthContext = createContext({})
+export interface AuthContextType {
+  auth: Auth;
+  setAuth: Dispatch<SetStateAction<Auth>>;
+}
 
-export const AuthProvider = ({children}) => { 
-    const[auth,setAuth] = useState({});
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-    return(
-        <AuthContext.Provider value={{auth, setAuth}}>
-            {children}
-        </AuthContext.Provider>
-    )
- }
+interface AuthProviderProps {
+  children: ReactNode;
+}
 
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const [auth, setAuth] = useState<Auth>({ password: '', user: '', roles: [] });
 
- export default AuthContext;
+  const authContextValue: AuthContextType = {
+    auth,
+    setAuth,
+  };
+
+  return (
+    <AuthContext.Provider value={authContextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

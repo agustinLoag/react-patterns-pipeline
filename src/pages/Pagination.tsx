@@ -1,23 +1,32 @@
-import React, { useState } from 'react'
-import WithPagination from '../hocs/WithPagination.component'
-import { usePaginationTable } from '../hooks/usePaginationTable'
-import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Box, Button, Grid, Typography } from '@mui/material';
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
-import { Button, Grid, Typography, Paper, Box } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
+import { ChangeEvent, useState } from 'react';
+import WithPagination from '../hocs/WithPagination.component';
+import { usePaginationTable } from '../hooks/usePaginationTable';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
-const PaginationTable = ({ hocPaginationProps }) => {
+interface HocPaginationProps {
+  handleRowsPerPage: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleNextPage: () => void;
+  handlePrevPage: () => void;
+  makePagination: (arrayData: any[]) => void;
+  totalPage: number;
+  rowsPerPage: number;
+  currentPage: number;
+  cloneData: any[];
+  valuesSearch: any[];
+}
+
+interface PaginationTableProps {
+  hocPaginationProps: HocPaginationProps;
+}
+
+const PaginationTable:  React.FC<PaginationTableProps> = ({ hocPaginationProps }) => {
   usePaginationTable(hocPaginationProps)
-  const [colDefs, setColDefs] = useState([
+  const [colDefs] = useState([
     { field: "name" },
     { field: "url" },
 
@@ -26,9 +35,7 @@ const PaginationTable = ({ hocPaginationProps }) => {
   return (
     <>
       <div className="ag-theme-quartz" style={{ height: 500 }}>
-        {/* The AG Grid component */}
         <AgGridReact rowData={cloneData} columnDefs={colDefs} />
-
       </div>
       <Box>
         <Grid container spacing={2}>

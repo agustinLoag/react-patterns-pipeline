@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 
-export const useLogin = (formValues) => {
+export const useLogin = (formValues: { email: string; password: string })=> {
     const { auth, setAuth } = useAuth()
     const navigate = useNavigate();
 
@@ -14,9 +14,9 @@ export const useLogin = (formValues) => {
             roles: [2323],
         })
 
-        if (auth.roles.includes[2020]) {
+        if (auth.roles.includes(2020)) {
             navigate('/userPanel', { replace: true })
-        } else if (auth.roles.includes[2323]) {
+        } else if (auth.roles.includes(2323)) {
             navigate('/adminPanel', { replace: true })
         } else {
             navigate('/login')

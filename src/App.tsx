@@ -1,14 +1,13 @@
 
 import { Route, Routes } from 'react-router-dom';
-import { LoginView } from './pages/Login';
+import { RequireAuth } from './components/RequireAuth';
 import { MainLayout } from './layout/MainLayout';
 import { NotFound } from './pages/404';
-import NewsPage from './pages/NewsPage';
 import AdminPage from './pages/AdminPage';
-import { RequireAuth } from './components/RequireAuth';
-import UserPage from './pages/UserPage';
-import { WithPaginationTable } from './pages/Pagination';
 import CompoundPattern from './pages/CompoundPattern';
+import { LoginView } from './pages/Login';
+import { WithPaginationTable } from './pages/Pagination';
+import UserPage from './pages/UserPage';
 
 const ROLES = {
   'User': 2020,

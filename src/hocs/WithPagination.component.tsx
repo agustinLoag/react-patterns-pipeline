@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { ComponentType, useEffect, useState } from 'react'
 
-const WithPagination = (ComponentRender) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const WithPagination = (ComponentRender:  ComponentType<any>)=> {
     const WrappedComponent = () => {
         const [totalPage, setTotalPage] = useState(0)
         const [rowsPerPage, setRowsPerPage] = useState(25)
@@ -13,19 +14,19 @@ const WithPagination = (ComponentRender) => {
             setTotalPage(Math.ceil(valuesSearch.length / rowsPerPage))
         }, [rowsPerPage, currentPage])
 
-        const handleRowsPerPage = (e) => {
+        const handleRowsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { value } = e.target;
             setRowsPerPage(+value)
             setCurrentPage(0)
         }
 
-        const handleNextPage = (e) => {
+        const handleNextPage = () => {
             if ((currentPage + 1) < totalPage) {
                 setCurrentPage(currentPage + 1)
             }
         }
 
-        const handlePrevPage = (e) => {
+        const handlePrevPage = () => {
             if (currentPage !== 0 ) {
                 setCurrentPage(currentPage - 1)
             }
@@ -39,7 +40,7 @@ const WithPagination = (ComponentRender) => {
             setCloneData(dataPagination)
         }
 
-        const makePagination = (arrayData) => { 
+        const makePagination = (arrayData: []) => { 
             setTotalPage(Math.ceil(arrayData.length/rowsPerPage))
             setValuesSearch(arrayData)
             setCurrentPage(0)

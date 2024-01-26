@@ -1,5 +1,4 @@
-import { Grid, Box, Typography, TextField, FormControlLabel, Checkbox, Button, Paper, Link } from '@mui/material'
-import React from 'react'
+import { Grid } from '@mui/material'
 import { LoginFormControlled } from '../components/LoginForm/LoginForm.component'
 
 export const LoginView = () => {

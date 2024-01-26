@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
-export const RequireAuth = ({ allowedRoles }) => {
+export const RequireAuth: React.FC<any> = ({ allowedRoles }) => {
     const { auth } = useAuth()
     const location = useLocation()
 

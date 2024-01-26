@@ -1,7 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios"
-import { useEffect } from "react"
+import { ChangeEvent, useEffect } from "react"
 
-export const usePaginationTable = (hocPaginationProps) => {
+interface HocPaginationProps {
+    handleRowsPerPage: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleNextPage: () => void;
+    handlePrevPage: () => void;
+    makePagination: (arrayData: any[]) => void;
+    totalPage: number;
+    rowsPerPage: number;
+    currentPage: number;
+    cloneData: any[];
+    valuesSearch: any[];
+  }
+
+export const usePaginationTable = (hocPaginationProps: HocPaginationProps) => {
     const { makePagination } = hocPaginationProps
     useEffect(() => {
         async function getData() {
